@@ -38,9 +38,9 @@ function Game() {
         setXIsNext((step % 2) === 0)
     }
 
-    const renderMoves = () =>
-        history.map((_step, move) => {
-            const currentSelectedIndex = history[stepNumber].index;
+    const renderMoves = () => {
+        const currentSelectedIndex = history[stepNumber].index;
+        const moves = history.map((_step, move) => {
             const currentIndex = history[move].index;
             const [row, col] = getRowCol(currentIndex);
             const desc = move ? `Go to move #${move} (${row}, ${col})` : "Go to game start";
@@ -54,6 +54,8 @@ function Game() {
                 </li>
             );
         });
+        return moves;
+    }
 
     const renderStatus = () => {
         let status;
